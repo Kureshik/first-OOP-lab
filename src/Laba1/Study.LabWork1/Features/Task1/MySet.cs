@@ -11,6 +11,7 @@ namespace Study.LabWork1.Features.Task1
         /// <summary>
         /// Конструктор, принимающий коллекцию и сохраняющий только уникальные элементы
         /// </summary>
+        /// <param name="collection">Исходная коллекция</param>
         public MySet(IEnumerable<T> collection)
         {
             _items = new List<T>();
@@ -47,14 +48,17 @@ namespace Study.LabWork1.Features.Task1
         /// <summary>
         /// Проверка наличия элемента в множестве
         /// </summary>
+        /// <param name="item">Обобщенный элемент</param>
+        /// <returns><see langword="true"/>, если элемент находится в множестве, иначе <see langword="false"/></returns>
         private bool Contains(T item)
         {
             return _items.Contains(item);
         }
 
         /// <summary>
-        /// Вывод в требуемом формате: {elem1, elem2, elem3}
+        /// Вывод в требуемом формате
         /// </summary>
+        /// <returns>Строка формата {elem1, elem2, elem3}</returns>
         public override string ToString()
         {
             if (_items.Count == 0)
@@ -68,6 +72,8 @@ namespace Study.LabWork1.Features.Task1
         /// <summary>
         /// Объединение: A | B
         /// </summary>
+        /// <param name="a">Множество A</param>
+        /// <param name="b">Множество B</param>
         public static MySet<T> operator |(MySet<T> a, MySet<T> b)
         {
             ArgumentNullException.ThrowIfNull(a);
@@ -85,6 +91,8 @@ namespace Study.LabWork1.Features.Task1
         /// <summary>
         /// Пересечение: A & B
         /// </summary>
+        /// <param name="a">Множество A</param>
+        /// <param name="b">Множество B</param>
         public static MySet<T> operator &(MySet<T> a, MySet<T> b)
         {
             ArgumentNullException.ThrowIfNull(a);
@@ -102,10 +110,13 @@ namespace Study.LabWork1.Features.Task1
         /// <summary>
         /// Разность: A - B
         /// </summary>
+        /// <param name="a">Множество A</param>
+        /// <param name="b">Множество B</param>
         public static MySet<T> operator -(MySet<T> a, MySet<T> b)
         {
             ArgumentNullException.ThrowIfNull(a);
             ArgumentNullException.ThrowIfNull(b);
+            HashSet<int> t;
 
             var result = new List<T>();
             foreach (var item in a._items)
@@ -119,6 +130,8 @@ namespace Study.LabWork1.Features.Task1
         /// <summary>
         /// Симметричная разность: A / B
         /// </summary>
+        /// <param name="a">Множество A</param>
+        /// <param name="b">Множество B</param>
         public static MySet<T> operator /(MySet<T> a, MySet<T> b)
         {
             ArgumentNullException.ThrowIfNull(a);
@@ -134,6 +147,9 @@ namespace Study.LabWork1.Features.Task1
         /// <summary>
         /// Сравнение множеств по значениям (==)
         /// </summary>
+        /// <param name="a">Множество A</param>
+        /// <param name="b">Множество B</param>
+        /// <returns></returns>
         public static bool operator ==(MySet<T> a, MySet<T> b)
         {
             if (a is null || b is null) return false;
@@ -148,13 +164,33 @@ namespace Study.LabWork1.Features.Task1
             return true;
         }
 
+        /// <summary>
+        /// Сравнение множеств по значениям (!=)
+        /// </summary>
+        /// <param name="a">Множество A</param>
+        /// <param name="b">Множество B</param>
+        /// <returns></returns>
         public static bool operator !=(MySet<T> a, MySet<T> b) => !(a == b);
 
+        /// <summary>
+        /// Переопределённый метод Equals.
+        /// Позволяет корректно сравнивать экземпляры <see cref="MySet{T}"/> при использовании 
+        /// в коллекциях и при явном вызове Equals().
+        /// </summary>
+        /// <param name="obj">Объект для сравнения</param>
+        /// <returns><see langword="true"/>, если obj является <see cref="MySet{T}"/> и содержит точно такие же элементы</returns>
         public override bool Equals(object? obj)
         {
             return obj is MySet<T> other && this == other;
         }
 
+        /// <summary>
+        /// Переопределённый метод GetHashCode.
+        /// Необходим для корректной работы сравнений == и !=  
+        /// Eсли два объекта равны по Equals(), то их GetHashCode() 
+        /// должны возвращать одинаковое значение (правило Equals-GetHashCode).
+        /// </summary>
+        /// <returns><see langword="int"/> хэш объекта множества</returns>
         public override int GetHashCode()
         {
             unchecked

@@ -80,7 +80,6 @@ Study.LabWork1.Features.Task1
 ##### Summary
 
 Обобщённое математическое множество уникальных элементов
-Внутреннее хранилище — List (по требованию преподавателя)
 
 <a name='M-Study-LabWork1-Features-Task1-MySet`1-#ctor-System-Collections-Generic-IEnumerable{`0}-'></a>
 ### #ctor() `constructor`

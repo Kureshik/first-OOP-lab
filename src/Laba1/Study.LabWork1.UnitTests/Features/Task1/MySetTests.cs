@@ -2,9 +2,15 @@ using Study.LabWork1.Features.Task1;
 
 namespace Study.LabWork1.UnitTests.Features.Task1
 {
+    /// <summary>
+    /// Тестирование множеста
+    /// </summary>
     [TestFixture]
     public class MySetTests
     {
+        /// <summary>
+        /// Тестирование конструктора на удаление дубликатов
+        /// </summary>
         [Test]
         public void Constructor_RemovesDuplicates_AndKeepsUniqueElements()
         {
@@ -15,6 +21,9 @@ namespace Study.LabWork1.UnitTests.Features.Task1
                 "Свойство Items должно содержать все уникальные элементы из переданной коллекции");
         }
 
+        /// <summary>
+        /// Тестирование конструктора на пустое множество
+        /// </summary>
         [Test]
         public void Constructor_EmptyCollection_CreatesEmptySet()
         {
@@ -24,6 +33,9 @@ namespace Study.LabWork1.UnitTests.Features.Task1
             Assert.That(set.ToString(), Is.EqualTo("{}"), "ToString() пустого множества должен возвращать {}");
         }
 
+        /// <summary>
+        /// Тестирование преобразование множества в строку
+        /// </summary>
         [Test]
         public void ToString_ReturnsCorrectFormat()
         {
@@ -33,6 +45,9 @@ namespace Study.LabWork1.UnitTests.Features.Task1
                 "ToString() должен возвращать строку в формате {elem1, elem2, elem3}");
         }
 
+        /// <summary>
+        /// Тестирование преобразования в строку пустого множества
+        /// </summary>
         [Test]
         public void ToString_EmptySet_ReturnsEmptyBraces()
         {
@@ -42,6 +57,9 @@ namespace Study.LabWork1.UnitTests.Features.Task1
                 "ToString() для пустого множества должен возвращать {}");
         }
 
+        /// <summary>
+        /// Тестирование объединения множеств
+        /// </summary>
         [Test]
         public void Union_Operator_ReturnsNewSetWithCombinedUniqueElements()
         {
@@ -57,6 +75,9 @@ namespace Study.LabWork1.UnitTests.Features.Task1
                 "ToString() объединения должен быть в корректном формате");
         }
 
+        /// <summary>
+        /// Тестирование пересечения множеств
+        /// </summary>
         [Test]
         public void Intersection_Operator_ReturnsCommonElements()
         {
@@ -70,6 +91,9 @@ namespace Study.LabWork1.UnitTests.Features.Task1
                 "Результат пересечения должен включать только элементы, присутствующие в обоих множествах");
         }
 
+        /// <summary>
+        /// Тестирование разности множеств
+        /// </summary>
         [Test]
         public void Difference_Operator_ReturnsElementsOnlyInFirstSet()
         {
@@ -83,6 +107,9 @@ namespace Study.LabWork1.UnitTests.Features.Task1
                 "Результат разности должен исключать все элементы из B");
         }
 
+        /// <summary>
+        /// Тестирование симметричной разности множеств
+        /// </summary>
         [Test]
         public void SymmetricDifference_Operator_ReturnsElementsInEitherButNotBoth()
         {
@@ -96,6 +123,9 @@ namespace Study.LabWork1.UnitTests.Features.Task1
                 "Результат A / B должен включать элементы из A и B, исключая общие");
         }
 
+        /// <summary>
+        /// Тестирование сравнения множеств
+        /// </summary>
         [Test]
         public void EqualityOperator_ComparesByValue_NotByReference()
         {
@@ -108,6 +138,9 @@ namespace Study.LabWork1.UnitTests.Features.Task1
             Assert.That(setA != setC, Is.True, "Оператор != должен возвращать true для неравных множеств");
         }
 
+        /// <summary>
+        /// Тестирование неизменности множества
+        /// </summary>
         [Test]
         public void Immutability_SetOperations_ReturnNewInstance_OriginalUnchanged()
         {
@@ -127,6 +160,9 @@ namespace Study.LabWork1.UnitTests.Features.Task1
                 "Каждая операция должна возвращать новый объект MySet<T>");
         }
 
+        /// <summary>
+        /// Тестирование множества на доступ только на чтение
+        /// </summary>
         [Test]
         public void Items_Property_ReturnsReadOnlyCollection()
         {
@@ -141,6 +177,9 @@ namespace Study.LabWork1.UnitTests.Features.Task1
                 "Коллекция Items должна быть доступна только для чтения");
         }
 
+        /// <summary>
+        /// Тестирование можества на работу с null
+        /// </summary>
         [Test]
         public void NullArguments_ThrowArgumentNullException()
         {
