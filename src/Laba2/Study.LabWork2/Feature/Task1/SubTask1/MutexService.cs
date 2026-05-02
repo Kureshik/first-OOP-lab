@@ -8,7 +8,30 @@ namespace Study.LabWork2.Feature.Task1.SubTask1;
 /// </summary>
 public sealed class MutexService : IPrimeCounter
 {
-    public PrimeCountResultDto CountPrimes(int start, int end, int threadCount) => throw new NotImplementedException();
+    private readonly Mutex _mutex = new();
 
-    public string GetVersionName() => throw new NotImplementedException();
+    /// <inheritdoc/>
+    public PrimeCountResultDto CountPrimes(int start, int end, int threadCount)
+    {
+        return PrimeCountingShared.CountPrimes(
+            start,
+            end,
+            threadCount,
+            GetVersionName(),
+            (number, foundPrimes) =>
+            {
+                _mutex.WaitOne();
+                try
+                {
+                    foundPrimes.Add(number);
+                }
+                finally
+                {
+                    _mutex.ReleaseMutex();
+                }
+            });
+    }
+
+    /// <inheritdoc/>
+    public string GetVersionName() => "Mutex";
 }
