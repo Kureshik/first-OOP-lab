@@ -8,6 +8,10 @@
 - [MonitorService](#T-Study-LabWork2-Feature-Task1-SubTask1-MonitorService 'Study.LabWork2.Feature.Task1.SubTask1.MonitorService')
 - [MutexService](#T-Study-LabWork2-Feature-Task1-SubTask1-MutexService 'Study.LabWork2.Feature.Task1.SubTask1.MutexService')
 - [NumberSetProcessor](#T-Study-LabWork2-Feature-Task1-SubTask2-NumberSetProcessor 'Study.LabWork2.Feature.Task1.SubTask2.NumberSetProcessor')
+  - [GetResult()](#M-Study-LabWork2-Feature-Task1-SubTask2-NumberSetProcessor-GetResult 'Study.LabWork2.Feature.Task1.SubTask2.NumberSetProcessor.GetResult')
+  - [Process()](#M-Study-LabWork2-Feature-Task1-SubTask2-NumberSetProcessor-Process 'Study.LabWork2.Feature.Task1.SubTask2.NumberSetProcessor.Process')
+- [Program](#T-Study-LabWork2-Program 'Study.LabWork2.Program')
+  - [Main()](#M-Study-LabWork2-Program-Main 'Study.LabWork2.Program.Main')
 - [SemaphoreService](#T-Study-LabWork2-Feature-Task1-SubTask1-SemaphoreService 'Study.LabWork2.Feature.Task1.SubTask1.SemaphoreService')
 - [SynchronousServerRequestApp](#T-Study-LabWork2-Feature-Task2-SynchronousServerRequestApp 'Study.LabWork2.Feature.Task2.SynchronousServerRequestApp')
 
@@ -65,6 +69,50 @@ Study.LabWork2.Feature.Task1.SubTask2
 ##### Summary
 
 Определяет реализацию для процессора наборов чисел
+
+<a name='M-Study-LabWork2-Feature-Task1-SubTask2-NumberSetProcessor-GetResult'></a>
+### GetResult() `method`
+
+##### Summary
+
+*Inherit from parent.*
+
+##### Parameters
+
+This method has no parameters.
+
+<a name='M-Study-LabWork2-Feature-Task1-SubTask2-NumberSetProcessor-Process'></a>
+### Process() `method`
+
+##### Summary
+
+*Inherit from parent.*
+
+##### Parameters
+
+This method has no parameters.
+
+<a name='T-Study-LabWork2-Program'></a>
+## Program `type`
+
+##### Namespace
+
+Study.LabWork2
+
+##### Summary
+
+Точка входа в приложение для запуска заданий лабораторной работы.
+
+<a name='M-Study-LabWork2-Program-Main'></a>
+### Main() `method`
+
+##### Summary
+
+Запускает обработку наборов чисел (SubTask2).
+
+##### Parameters
+
+This method has no parameters.
 
 <a name='T-Study-LabWork2-Feature-Task1-SubTask1-SemaphoreService'></a>
 ## SemaphoreService `type`
