@@ -15,4 +15,8 @@
     <Using Include="NUnit.Framework" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Study.LabWork2\Study.LabWork2.csproj" />
+  </ItemGroup>
+
 </Project>
