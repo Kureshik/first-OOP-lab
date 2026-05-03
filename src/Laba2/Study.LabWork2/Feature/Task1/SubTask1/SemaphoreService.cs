@@ -8,7 +8,30 @@ namespace Study.LabWork2.Feature.Task1.SubTask1;
 /// </summary>
 public sealed class SemaphoreService : IPrimeCounter
 {
-    public PrimeCountResultDto CountPrimes(int start, int end, int threadCount) => throw new NotImplementedException();
+    private readonly Semaphore _semaphore = new(1, 1);
 
-    public string GetVersionName() => throw new NotImplementedException();
+    /// <inheritdoc/>
+    public PrimeCountResultDto CountPrimes(int start, int end, int threadCount)
+    {
+        return PrimeCountingShared.CountPrimes(
+            start,
+            end,
+            threadCount,
+            GetVersionName(),
+            (number, foundPrimes) =>
+            {
+                _semaphore.WaitOne();
+                try
+                {
+                    foundPrimes.Add(number);
+                }
+                finally
+                {
+                    _semaphore.Release();
+                }
+            });
+    }
+
+    /// <inheritdoc/>
+    public string GetVersionName() => "Semaphore";
 }

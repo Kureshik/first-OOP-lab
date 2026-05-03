@@ -8,7 +8,26 @@ namespace Study.LabWork2.Feature.Task1.SubTask1;
 /// </summary>
 public sealed class MonitorService : IPrimeCounter
 {
-    public PrimeCountResultDto CountPrimes(int start, int end, int threadCount) => throw new NotImplementedException();
+    private readonly object _syncRoot = new();
 
-    public string GetVersionName() => throw new NotImplementedException();
+    /// <inheritdoc/>
+    public PrimeCountResultDto CountPrimes(int start, int end, int threadCount)
+    {
+        return PrimeCountingShared.CountPrimes(
+            start,
+            end,
+            threadCount,
+            GetVersionName(),
+            (number, foundPrimes) =>
+            {
+                lock (_syncRoot)
+                {
+                    foundPrimes.Add(number);
+                }
+            }
+        );
+    }
+
+    /// <inheritdoc/>
+    public string GetVersionName() => "Monitor";
 }
